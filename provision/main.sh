@@ -32,13 +32,7 @@ sudo dpkg -i /home/vagrant/python-ckan_2.2_amd64.deb
 echo ":: Changing Apache 2 configuration for CKAN defaults"
 sudo cp /vagrant/provision/apache2_ckan_default.conf /etc/apache2/sites-available/ckan_default
 
-echo ":: Setting Apache2 default ServerName"
-sudo rm -f /etc/apache2/httpd.conf
-sudo echo "ServerName localhost" > httpd.conf
-sudo mv httpd.conf /etc/apache2/httpd.conf
-sudo chown root:root /etc/apache2/httpd.conf
-
-echo ":: Starting Apache2"
+echo ":: Restarting Apache2"
 sudo service apache2 restart 
 
 echo ":: Install postgresql-9.1, jetty and openjdk-6"
@@ -70,4 +64,5 @@ source /usr/lib/ckan/default/bin/activate
 paster --plugin=ckan user add admin email=admin@email.org password=pass -c /etc/ckan/default/production.ini
 paster --plugin=ckan sysadmin add admin -c /etc/ckan/default/production.ini
 
-echo ":: Running instance on 192.168.13.37"
+echo ":: Congratulations!! Everything up and running..."
+echo ":: You should add line '192.168.13.37   ckan.lo' to your host file or use http://localhost:8765 for connection"
