@@ -32,6 +32,12 @@ sudo dpkg -i /home/vagrant/python-ckan_2.2_amd64.deb
 echo ":: Changing Apache 2 configuration for CKAN defaults"
 sudo cp /vagrant/provision/apache2_ckan_default.conf /etc/apache2/sites-available/ckan_default
 
+echo ":: Setting Apache2 default ServerName"
+sudo rm -f /etc/apache2/httpd.conf
+sudo echo "ServerName localhost" > httpd.conf
+sudo mv httpd.conf /etc/apache2/httpd.conf
+sudo chown root:root /etc/apache2/httpd.conf
+
 echo ":: Starting Apache2"
 sudo service apache2 restart 
 
