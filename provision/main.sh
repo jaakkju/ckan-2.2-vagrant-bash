@@ -64,5 +64,4 @@ source /usr/lib/ckan/default/bin/activate
 paster --plugin=ckan user add admin email=admin@email.org password=pass -c /etc/ckan/default/production.ini
 paster --plugin=ckan sysadmin add admin -c /etc/ckan/default/production.ini
 
-echo ":: Congratulations!! Everything up and running..."
-echo ":: You should add line '192.168.13.37   ckan.lo' to your host file or use http://localhost:8765 for connection"
+echo ":: CKAN running in http://localhost:8765 or 192.168.13.37:8080"
