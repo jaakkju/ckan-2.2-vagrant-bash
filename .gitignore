@@ -1,7 +1,8 @@
+# folders
+repositories/
 
-
-# log files #
+# log files
 *.log
 
-# machines #
+# machines
 .vagrant/
