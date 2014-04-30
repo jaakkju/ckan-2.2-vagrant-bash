@@ -43,6 +43,10 @@ sudo cp /vagrant/provision/jetty.conf /etc/default/jetty
 sudo mkdir -p /var/lib/ckan/storage
 sudo chown jetty:jetty -R /var/lib/ckan/
 
+echo ":: Creating CKAN resource directory"
+sudo mkdir /var/lib/ckan/resources
+chown jetty:jetty /var/lib/ckan/resources
+
 echo ":: Create a CKAN database in postgresql"
 sudo -u postgres createuser -S -D -R ckan_default
 sudo -u postgres psql -c "ALTER USER ckan_default PASSWORD 'pass'"
@@ -61,7 +65,7 @@ sudo ckan db init
 
 echo ":: Creating an admin user"
 source /usr/lib/ckan/default/bin/activate
-paster --plugin=ckan user add admin email=admin@email.org password=pass -c /etc/ckan/default/production.ini
+paster --plugin=ckan user add admin email=example@email.org password=pass -c /etc/ckan/default/production.ini
 paster --plugin=ckan sysadmin add admin -c /etc/ckan/default/production.ini
 
 echo ":: CKAN running in http://localhost:8765 or 192.168.13.37:8080"
